@@ -24,7 +24,10 @@ ngn.setup = function () {
     return;
   }
   
-  var center = {x: 0, y: 0};
+  var center = {x: 0, y: 0},
+      currentState = new gridState();
+  
+  currentState.init();
 
   window.addEventListener('resize', onR, false);
   function onR () {
@@ -43,6 +46,8 @@ ngn.setup = function () {
     context.fillStyle = "#7cad43";
     context.fillRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
     context.fill();
+    
+    currentState.render();
   }());
       
 };
