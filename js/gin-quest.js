@@ -34,7 +34,7 @@ ngn.setup = function () {
     window.requestAnimationFrame(onF, canvas);
     context.clearRect(0, 0, canvas.width, canvas.height);
   
-    context.fillStyle = "#00ff00";
+    context.fillStyle = "#7cad43";
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.fill();
   }());
