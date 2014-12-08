@@ -7,5 +7,9 @@ var gridState = function () {
   this.render = function (context) {
     console.log('grid rendering');
   };
+  
+  this.destroy = function () {
+    console.log('grid destoyed');
+  };
 
 };
