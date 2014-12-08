@@ -26,8 +26,9 @@ ngn.setup = function () {
   
   var center = {x: 0, y: 0},
       currentState = new gridState();
-  
+      
   currentState.init();
+  this.currentState = currentState;
 
   window.addEventListener('resize', onR, false);
   function onR () {
@@ -47,7 +48,9 @@ ngn.setup = function () {
     context.fillRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
     context.fill();
     
-    currentState.render();
+    if (currentState !== null) {
+      currentState.render();
+    }
   }());
       
 };
