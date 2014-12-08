@@ -17,18 +17,24 @@ ngn.setup = function () {
                                     });
   }
 
-  var canvas = document.getElementById('canvas'), context = canvas.getContext('2d');
+  var canvas = document.getElementById('canvas'), 
+      context = canvas.getContext('2d');
 
   if(!context){
     return;
   }
+  
+  var center = {x: 0, y: 0};
 
   window.addEventListener('resize', onR, false);
-  onR();
   function onR () {
     canvas.width = (window.innerWidth < 1024) ? window.innerWidth : 1024;
     canvas.height = (window.innerHeight < 1024) ? window.innerHeight : 1024;
+    center.x = canvas.width / 2;
+    center.y = canvas.height / 2;
+    context.translate(center.x, center.y);
   }
+  onR();
 
   (function onF (){
     window.requestAnimationFrame(onF, canvas);
