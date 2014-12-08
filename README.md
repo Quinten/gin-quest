@@ -1,4 +1,3 @@
-gin-quest
-=========
+#gin-quest
 
-some testing for a html5 game
+the start of a mysterious project
