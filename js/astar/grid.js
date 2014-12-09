@@ -5,8 +5,12 @@ var grid = function () {
   this.numCols = 32;
   this.numRows = 32;
   
-  this.init = function (nCols = 32, nRows = 32) {
-    this.numCols = nCols;
-    this.numRows = nRows;
+  this.init = function (nCols, nRows) {
+    if (nCols != undefined){
+      this.numCols = nCols;
+    }
+    if (nRows != undefined) {
+      this.numRows = nRows;
+    }
   };
 };
