@@ -1,7 +1,11 @@
 var GridState = function () {
+  
+  this.grid = null;
 
   this.init = function () {
-    console.log('grid initialized');
+    this.grid = new Grid();
+    this.grid.init(32,32);
+    this.grid.setWalkable(16,16, false);
   };
   
   this.render = function (context) {
@@ -19,9 +23,20 @@ var GridState = function () {
     }
     context.strokeStyle = "#669900";
     context.stroke();
+    context.closePath();
+    
+    context.fillStyle = "#99cc00";
+    for(var i = 0; i < this.grid.numCols; i++){
+      for(var j = 0; j < this.grid.numRows; j++){
+        if (this.grid.nodes[i][j].walkable) {
+          context.fillRect(i * 64, j * 64, 64, 64);          
+        }
+      }
+    }
+    
+    // man
     context.fillStyle = "#ff3300";
     context.fillRect(1024-32, 1024-32, 64, 64);
-    context.closePath();
     context.restore();
   };
   
