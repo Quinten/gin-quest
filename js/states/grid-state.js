@@ -7,7 +7,7 @@ var gridState = function () {
   this.render = function (context) {
     //console.log('grid rendering');
     context.save();
-    context.translate(-1204, -1024);
+    context.translate(-1024, -1024);
     context.beginPath();
     for (var x = 1; x < 32; x++ ) {
       context.moveTo(x * 64, 0);
@@ -19,6 +19,8 @@ var gridState = function () {
     }
     context.stroke();
     context.closePath();
+    context.fillStyle = "#ff000";
+    context.fillRect(1024-32, 1024-32, 64, 64);
     context.restore();
   };
   
