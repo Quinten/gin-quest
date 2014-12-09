@@ -1,4 +1,4 @@
-var gridState = function () {
+var GridState = function () {
 
   this.init = function () {
     console.log('grid initialized');
