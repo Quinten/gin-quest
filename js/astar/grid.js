@@ -33,7 +33,7 @@ var Grid = function () {
   };
 
   this.setWalkable = function(x, y, val){
-    this.nodes[x, y].walkable = val;
+    this.nodes[x][y].walkable = val;
   };
 
 };
