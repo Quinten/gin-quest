@@ -17,8 +17,9 @@ var gridState = function () {
       context.moveTo(0, y * 64);
       context.lineTo(2048, y * 64);
     }
+    context.strokeStyle = "#999900";
     context.stroke();
-    context.fillStyle = "#ff0000";
+    context.fillStyle = "#ff3300";
     context.fillRect(1024-32, 1024-32, 64, 64);
     context.closePath();
     context.restore();
