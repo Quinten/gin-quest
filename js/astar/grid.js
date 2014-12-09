@@ -1,16 +1,16 @@
-var grid = function () {
+var Grid = function () {
   this.startNode = null;
   this.endNode = null;
   this.nodes = [];
   this.numCols = 32;
   this.numRows = 32;
   
-  this.init = function (nCols, nRows) {
-    if (nCols != undefined){
-      this.numCols = nCols;
+  this.init = function (numCols, numRows) {
+    if (numCols != undefined){
+      this.numCols = numCols;
     }
-    if (nRows != undefined) {
-      this.numRows = nRows;
+    if (numRows != undefined) {
+      this.numRows = numRows;
     }
   };
 };
