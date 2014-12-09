@@ -45,7 +45,6 @@ ngn.setup = function () {
   
     context.fillStyle = "#7cad43";
     context.fillRect(-canvas.width/2, -canvas.height/2, canvas.width, canvas.height);
-    context.fill();
     
     if (ngn.currentState !== null) {
       ngn.currentState.render(context);
