@@ -19,7 +19,7 @@ var gridState = function () {
     }
     context.stroke();
     context.closePath();
-    context.fillStyle = "#ff000";
+    context.fillStyle = "#FF000";
     context.fillRect(1024-32, 1024-32, 64, 64);
     context.fill();
     context.restore();
