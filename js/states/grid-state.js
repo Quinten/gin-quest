@@ -25,10 +25,10 @@ var GridState = function () {
     context.stroke();
     context.closePath();
     
-    context.fillStyle = "#99cc00";
+    context.fillStyle = "#669900";
     for(var i = 0; i < this.grid.numCols; i++){
       for(var j = 0; j < this.grid.numRows; j++){
-        if (this.grid.nodes[i][j].walkable) {
+        if (!this.grid.nodes[i][j].walkable) {
           context.fillRect(i * 64, j * 64, 64, 64);          
         }
       }
