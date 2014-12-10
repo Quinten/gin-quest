@@ -9,40 +9,39 @@ var AStar = function () {
   this.heuristic = this.manhattan;
   //this.heuristic = this.euclidian;
   //this.heuristic = this.diagonal;
-	this.straightCost = 1;
-	this.diagCost = Math.SQRT2;
+  this.straightCost = 1;
+  this.diagCost = Math.SQRT2;
 
-	this.findPath = function (grid) {
-		this.grid = grid;
-		this.open = [];
-		this.closed = [];
-		
-		this.startNode = this.grid.startNode;
-		this.endNode = this.grid.endNode;
-		
-		this.startNode.g = 0;
-		this.startNode.h = this.heuristic(this.startNode);
-		this.startNode.f = this.startNode.g + this.startNode.h;
-		
-		return this.search();
-	}
-	
-	this.search = function ()	{
-		var node = this.startNode;
-		while (node != this.endNode) {
-			var startX = Math.max(0, node.x - 1);
-			var endX = Math.min(this.grid.numCols - 1, node.x + 1);
-			var startY = Math.max(0, node.y - 1);
-			var endY = Math.min(this.grid.numRows - 1, node.y + 1);
-			
-			for (var i = startX; i <= endX; i++) {
-				for (var j = startY; j <= endY; j++) {
-					var test = this.grid.getNode(i, j);
-					if (test == node || !test.walkable || !this.grid.getNode(node.x, test.y).walkable || !this.grid.getNode(test.x, node.y).walkable) //...
-					{
-						continue;
-					}
-					
+  this.findPath = function (grid) {
+    this.grid = grid;
+    this.open = [];
+    this.closed = [];
+
+    this.startNode = this.grid.startNode;
+    this.endNode = this.grid.endNode;
+
+    this.startNode.g = 0;
+    this.startNode.h = this.heuristic(this.startNode);
+    this.startNode.f = this.startNode.g + this.startNode.h;
+
+    return this.search();
+  }
+
+  this.search = function ()	{
+    var node = this.startNode;
+    while (node != this.endNode) {
+      var startX = Math.max(0, node.x - 1);
+      var endX = Math.min(this.grid.numCols - 1, node.x + 1);
+      var startY = Math.max(0, node.y - 1);
+      var endY = Math.min(this.grid.numRows - 1, node.y + 1);
+
+      for (var i = startX; i <= endX; i++) {
+        for (var j = startY; j <= endY; j++) {
+          var test = this.grid.getNode(i, j);
+          if (test == node || !test.walkable || !this.grid.getNode(node.x, test.y).walkable || !this.grid.getNode(test.x, node.y).walkable) {
+            continue;
+          }
+
 					var cost:Number = _straightCost;
 					if(!((node.x == test.x) || (node.y == test.y)))
 					{
