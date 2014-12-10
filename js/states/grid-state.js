@@ -7,7 +7,7 @@ var GridState = function () {
     this.grid = new Grid();
     this.grid.init(32,32);
     this.grid.setStartNode(8,16);
-    this.grid.setEndNode(24,16);
+    this.grid.setEndNode(23,16);
   };
   
   this.render = function (context) {
