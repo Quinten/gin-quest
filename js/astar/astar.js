@@ -8,7 +8,7 @@ var AStar = function () {
   this.path = null;
   this.heuristic = this.manhattan;
   //this.heuristic = this.euclidian;
-	//this.heuristic = this.diagonal;
+  //this.heuristic = this.diagonal;
 	this.straightCost = 1;
 	this.diagCost = Math.SQRT2;
 
@@ -24,20 +24,18 @@ var AStar = function () {
 		this.startNode.h = this.heuristic(this.startNode);
 		this.startNode.f = this.startNode.g + this.startNode.h;
 		
-		return search();
+		return this.search();
 	}
 	
-	public function search():Boolean
-	{
-		var node:Node = _startNode;
-		while(node != _endNode)
-		{
-			var startX:int = Math.max(0, node.x - 1);
-			var endX:int = Math.min(_grid.numCols - 1, node.x + 1);
-			var startY:int = Math.max(0, node.y - 1);
-			var endY:int = Math.min(_grid.numRows - 1, node.y + 1);
+	this.search = function ()	{
+		var node = this.startNode;
+		while (node != this.endNode) {
+			var startX = Math.max(0, node.x - 1);
+			var endX = Math.min(this.grid.numCols - 1, node.x + 1);
+			var startY = Math.max(0, node.y - 1);
+			var endY = Math.min(this.grid.numRows - 1, node.y + 1);
 			
-			for(var i:int = startX; i <= endX; i++)
+			for(var i = startX; i <= endX; i++) //...
 			{
 				for(var j:int = startY; j <= endY; j++)
 				{
