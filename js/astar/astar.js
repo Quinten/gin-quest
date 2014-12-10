@@ -61,7 +61,7 @@ var AStar = function () {
             test.g = g;
             test.h = h;
             test.parent = node;
-						this.open.push(test);
+            this.open.push(test);
           }
         }
       }
@@ -74,8 +74,8 @@ var AStar = function () {
       this.open.sort(function (a, b){ return a.f - b.f; });
       node = this.open.shift();
     }
-		this.buildPath();
-		return true;
+    this.buildPath();
+    return true;
   };
 //...
 	private function buildPath():void
