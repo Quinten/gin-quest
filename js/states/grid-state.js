@@ -38,7 +38,8 @@ var GridState = function () {
     // man
     //context.fillStyle = "#ff3300";
     //context.fillRect(1024-32, 1024-32, 64, 64);
-    //context.restore();
+    
+    context.restore();
   };
   
   this.processClick = function (x , y) {
