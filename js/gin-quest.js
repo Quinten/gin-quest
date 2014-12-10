@@ -52,7 +52,7 @@ ngn.setup = function () {
     y -= canvas.offsetTop;
     x -= canvas.width / 2;
     y -= canvas.height / 2;
-    console.log("canvas x:" + x + " y:" + y);
+    //console.log("canvas x:" + x + " y:" + y);
     ngn.currentState.processClick(x, y);
   };
   canvas.addEventListener('click', onC, false);
