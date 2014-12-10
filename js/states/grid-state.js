@@ -6,7 +6,7 @@ var GridState = function () {
   this.init = function () {
     this.grid = new Grid();
     this.grid.init(32,32);
-    this.grid.setWalkable(16,16, false);
+    //this.grid.setWalkable(16,16, false);
   };
   
   this.render = function (context) {
@@ -36,15 +36,18 @@ var GridState = function () {
     }
     
     // man
-    context.fillStyle = "#ff3300";
-    context.fillRect(1024-32, 1024-32, 64, 64);
-    context.restore();
+    //context.fillStyle = "#ff3300";
+    //context.fillRect(1024-32, 1024-32, 64, 64);
+    //context.restore();
   };
   
   this.processClick = function (x , y) {
     var localX = x - this.offset.x;
     var localY = y - this.offset.y;
     console.log("localX:" + localX + " localY:" + localY);
+    var gridX = Math.floor(localX / 64);
+    var gridY = Math.floor(localY / 64);
+    this.grid.setWalkable(gridX, gridY, !this.grid.getWalkable(gridX, gridY);
   }
   
   this.destroy = function () {
