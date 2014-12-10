@@ -25,7 +25,7 @@ var AStar = function () {
     this.startNode.f = this.startNode.g + this.startNode.h;
 
     return this.search();
-  }
+  };
 
   this.search = function ()	{
     var node = this.startNode;
@@ -42,50 +42,42 @@ var AStar = function () {
             continue;
           }
 
-					var cost:Number = _straightCost;
-					if(!((node.x == test.x) || (node.y == test.y)))
-					{
-						cost = _diagCost;
-					}
-					var g:Number = node.g + cost * test.costMultiplier;
-					var h:Number = _heuristic(test);
-					var f:Number = g + h;
-					if(isOpen(test) || isClosed(test))
-					{
-						if(test.f > f)
-						{
-							test.f = f;
-							test.g = g;
-							test.h = h;
-							test.parent = node;
-						}
-					}
-					else
-					{
-						test.f = f;
-						test.g = g;
-						test.h = h;
-						test.parent = node;
-						_open.push(test);
-					}
-				}
-			}
-			for(var o:int = 0; o < _open.length; o++)
-			{
-			}
-			_closed.push(node);
-			if(_open.length == 0)
-			{
-				trace("no path found");
-				return false
-			}
-			_open.sortOn("f", Array.NUMERIC);
-			node = _open.shift() as Node;
-		}
-		buildPath();
+          var cost = this.straightCost;
+          if (!((node.x == test.x) || (node.y == test.y))) {
+            cost = this.diagCost;
+          }
+          var g = node.g + cost * test.costMultiplier;
+          var h = this.heuristic(test);
+          var f = g + h;
+          if (this.isOpen(test) || this.isClosed(test)) {
+            if (test.f > f) {
+              test.f = f;
+              test.g = g;
+              test.h = h;
+              test.parent = node;
+            }
+          } else {
+            test.f = f;
+            test.g = g;
+            test.h = h;
+            test.parent = node;
+						this.open.push(test);
+          }
+        }
+      }
+      this.closed.push(node);
+      if (this.open.length == 0) {
+        console.log("no path found");
+        return false;
+      }
+      //_open.sortOn("f", Array.NUMERIC);
+      this.open.sort(function (a, b){ return a.f - b.f; });
+      node = this.open.shift();
+    }
+		this.buildPath();
 		return true;
-	}
-	
+  };
+//...
 	private function buildPath():void
 	{
 		_path = new Array();
