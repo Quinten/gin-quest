@@ -39,7 +39,7 @@ ngn.setup = function () {
   }
   onR();
   
-  this.onclick = function (e) {
+  function onC (e) {
     var x, y;
     if (e.pageX || e.pageY) {
       x = e.pageX;
@@ -50,9 +50,12 @@ ngn.setup = function () {
     }
     x -= canvas.offsetLeft;
     y -= canvas.offsetTop;
-    console.log("click x:" + x + " y:" + y);
+    x -= canvas.width / 2;
+    y -= canvas.height / 2;
+    console.log("canvas x:" + x + " y:" + y);
+    ngn.currentState.processClick(x, y);
   };
-  canvas.addEventListener('click', this.onclick, false);
+  canvas.addEventListener('click', onC, false);
 
   (function onF (){
     window.requestAnimationFrame(onF, canvas);
