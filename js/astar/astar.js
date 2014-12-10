@@ -35,15 +35,10 @@ var AStar = function () {
 			var startY = Math.max(0, node.y - 1);
 			var endY = Math.min(this.grid.numRows - 1, node.y + 1);
 			
-			for(var i = startX; i <= endX; i++) //...
-			{
-				for(var j:int = startY; j <= endY; j++)
-				{
-					var test:Node = _grid.getNode(i, j);
-					if(test == node || 
-					   !test.walkable ||
-					   !_grid.getNode(node.x, test.y).walkable ||
-					   !_grid.getNode(test.x, node.y).walkable)
+			for (var i = startX; i <= endX; i++) {
+				for (var j = startY; j <= endY; j++) {
+					var test = this.grid.getNode(i, j);
+					if (test == node || !test.walkable || !this.grid.getNode(node.x, test.y).walkable || !this.grid.getNode(test.x, node.y).walkable) //...
 					{
 						continue;
 					}
