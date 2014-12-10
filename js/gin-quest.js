@@ -38,6 +38,21 @@ ngn.setup = function () {
     context.translate(center.x, center.y);
   }
   onR();
+  
+  this.onclick = function (e) {
+    var x, y;
+    if (e.pageX || e.pageY) {
+      x = e.pageX;
+      y = e.pageY;
+    } else {
+      x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+      y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+    x -= canvas.offsetLeft;
+    y -= canvas.offsetTop;
+    console.log("click x:" + x + " y:" + y);
+  };
+  canvas.addEventListener('click', this.onclick, false);
 
   (function onF (){
     window.requestAnimationFrame(onF, canvas);
