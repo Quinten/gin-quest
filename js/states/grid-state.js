@@ -43,7 +43,7 @@ var GridState = function () {
   
   this.processClick = function (x , y) {
     var localX = x - this.offset.x;
-    var loaclY = y - this.offset.y;
+    var localY = y - this.offset.y;
     console.log("localX:" + localX + " localY:" + localY);
   }
   
