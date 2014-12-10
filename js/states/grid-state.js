@@ -1,6 +1,7 @@
 var GridState = function () {
   
   this.grid = null;
+  this.offset = {x: -1024, y: -1024};
 
   this.init = function () {
     this.grid = new Grid();
@@ -11,7 +12,7 @@ var GridState = function () {
   this.render = function (context) {
     //console.log('grid rendering');
     context.save();
-    context.translate(-1024, -1024);
+    context.translate(this.offset.x, this.offset.y);
     context.beginPath();
     for (var x = 1; x < 32; x++ ) {
       context.moveTo(x * 64, 0);
@@ -39,6 +40,12 @@ var GridState = function () {
     context.fillRect(1024-32, 1024-32, 64, 64);
     context.restore();
   };
+  
+  this.processClick = function (x , y) {
+    var localX = x - this.offset.x;
+    var loaclY = y - this.offset.y;
+    console.log("localX:" + localX + " localY:" + localY);
+  }
   
   this.destroy = function () {
     console.log('grid destoyed');
