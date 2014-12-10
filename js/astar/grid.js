@@ -35,5 +35,9 @@ var Grid = function () {
   this.setWalkable = function(x, y, val){
     this.nodes[x][y].walkable = val;
   };
+  
+  this.getWalkable = function(x, y){
+    return this.nodes[x][y].walkable;
+  };
 
 };
