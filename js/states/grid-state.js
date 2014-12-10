@@ -47,6 +47,8 @@ var GridState = function () {
     console.log("localX:" + localX + " localY:" + localY);
     var gridX = Math.floor(localX / 64);
     var gridY = Math.floor(localY / 64);
+    console.log("gridX:" + gridX + " gridY:" + gridY);
+    console.log(this.grid.getWalkable(gridX, gridY));
     this.grid.setWalkable(gridX, gridY, !this.grid.getWalkable(gridX, gridY));
   }
   
