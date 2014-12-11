@@ -124,7 +124,7 @@ var AStar = function () {
     return this.diagCost * diag + this.straightCost * (straight - 2 * diag);
   }
 
-  this.visited = function()	{
+  this.visited = function() {
     return this.closed.concat(this.open);
   }
 }
