@@ -27,7 +27,7 @@ var AStar = function () {
     return this.search();
   };
 
-  this.search = function ()	{
+  this.search = function () {
     var node = this.startNode;
     while (node != this.endNode) {
       var startX = Math.max(0, node.x - 1);
