@@ -86,7 +86,7 @@ var AStar = function () {
       node = node.parent;
       this.path.unshift(node);
     }
-  }
+  };
 
   this.isOpen = function(node) {
     for (var i = 0; i < this.open.length; i++) {
@@ -95,7 +95,7 @@ var AStar = function () {
       }
     }
     return false;
-  }
+  };
 
   this.isClosed = function(node) {
     for (var i = 0; i < this.closed.length; i++) {
@@ -104,17 +104,17 @@ var AStar = function () {
       }
     }
     return false;
-  }
+  };
 
   this.manhattan = function(node) {
     return Math.abs(node.x - this.endNode.x) * this.straightCost + Math.abs(node.y + this.endNode.y) * this.straightCost;
-  }
+  };
 
   this.euclidian = function(node) {
     var dx = node.x - this.endNode.x;
     var dy = node.y - this.endNode.y;
     return Math.sqrt(dx * dx + dy * dy) * this.straightCost;
-  }
+  };
 
   this.diagonal = function(node) {
     var dx = Math.abs(node.x - this.endNode.x);
@@ -122,9 +122,9 @@ var AStar = function () {
     var diag = Math.min(dx, dy);
     var straight = dx + dy;
     return this.diagCost * diag + this.straightCost * (straight - 2 * diag);
-  }
+  };
 
   this.visited = function() {
     return this.closed.concat(this.open);
-  }
+  };
 }
