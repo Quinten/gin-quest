@@ -96,7 +96,7 @@ var AStar = function () {
 
   this.isClosed = function(node) {
     for (var i = 0; i < this.closed.length; i++) {
-      if (_closed[i] == node) {
+      if (this.closed[i] == node) {
         return true;
       }
     }
