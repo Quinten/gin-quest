@@ -2,12 +2,14 @@ var GridState = function () {
   
   this.grid = null;
   this.offset = {x: -1024, y: -1024};
+  this.finder = null;
 
   this.init = function () {
     this.grid = new Grid();
     this.grid.init(32,32);
     this.grid.setStartNode(8,16);
     this.grid.setEndNode(23,16);
+    this.finder = new AStar();
   };
   
   this.render = function (context) {
@@ -30,13 +32,21 @@ var GridState = function () {
     context.closePath();
     
     // fill unwalkable nodes
-    context.fillStyle = "#669900";
+    context.fillStyle = "#999999";
     for(var i = 0; i < this.grid.numCols; i++){
       for(var j = 0; j < this.grid.numRows; j++){
         if (!this.grid.nodes[i][j].walkable) {
           context.fillRect(i * 64, j * 64, 64, 64);
         }
       }
+    }
+    
+    // fill path
+    if (this.finder.path.length) {
+      context.fillStyle = "#669900";
+      for(var p = 0; p < this.finder.path.length; p++){
+          context.fillRect(this.finder.path[p].x * 64, this.finder.path[p].y * 64, 64, 64);
+      }      
     }
     
     // fill startNode
@@ -59,6 +69,7 @@ var GridState = function () {
     console.log("gridX:" + gridX + " gridY:" + gridY);
     //console.log(this.grid.getWalkable(gridX, gridY));
     this.grid.setWalkable(gridX, gridY, !this.grid.getWalkable(gridX, gridY));
+    this.finder.findPath(this.grid);
   }
   
   this.destroy = function () {
