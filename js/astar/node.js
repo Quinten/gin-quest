@@ -6,4 +6,5 @@ var Node = function (x, y) {
   this.h = 0;
   this.walkable = true;
   parent = null;
+  this.costMultiplier = 1;
 }
