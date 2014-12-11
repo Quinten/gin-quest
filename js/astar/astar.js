@@ -6,9 +6,6 @@ var AStar = function () {
   this.endNode = null;
   this.startNode = null;
   this.path = null;
-  this.heuristic = this.manhattan;
-  //this.heuristic = this.euclidian;
-  //this.heuristic = this.diagonal;
   this.straightCost = 1;
   this.diagCost = Math.SQRT2;
 
@@ -123,6 +120,10 @@ var AStar = function () {
     var straight = dx + dy;
     return this.diagCost * diag + this.straightCost * (straight - 2 * diag);
   };
+  
+  this.heuristic = this.manhattan;
+  //this.heuristic = this.euclidian;
+  //this.heuristic = this.diagonal;
 
   this.visited = function() {
     return this.closed.concat(this.open);
