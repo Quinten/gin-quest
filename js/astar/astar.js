@@ -122,9 +122,9 @@ var AStar = function () {
     return this.diagCost * diag + this.straightCost * (straight - 2 * diag);
   };
   
-  //this.heuristic = this.manhattan;
+  this.heuristic = this.manhattan;
   //this.heuristic = this.euclidian;
-  this.heuristic = this.diagonal;
+  //this.heuristic = this.diagonal;
 
   this.visited = function() {
     return this.closed.concat(this.open);
