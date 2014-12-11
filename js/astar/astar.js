@@ -5,7 +5,7 @@ var AStar = function () {
   this.grid = null;
   this.endNode = null;
   this.startNode = null;
-  this.path = null;
+  this.path = [];
   this.straightCost = 1;
   this.diagCost = Math.SQRT2;
 
@@ -65,6 +65,7 @@ var AStar = function () {
       this.closed.push(node);
       if (this.open.length == 0) {
         console.log("no path found");
+        this.path = [];
         return false;
       }
       //_open.sortOn("f", Array.NUMERIC);
