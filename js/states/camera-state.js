@@ -38,8 +38,10 @@ var map = [
   this.grid = null;
   this.offset = {x: -1024, y: -1024};
   this.finder = null;
+  this.gin = null;
 
   this.init = function () {
+    this.gin = new Gin(16,16);
     this.grid = new Grid();
     this.grid.init(32,32);
     this.grid.setStartNode(16,16);
@@ -102,6 +104,8 @@ var map = [
     //context.fillStyle = "#6699cc";
     //context.fillRect(this.grid.endNode.x * 64, this.grid.endNode.y * 64, 64, 64);
     
+    // render gin sprite
+    this.gin.render(context);
     context.restore();
   };
   
