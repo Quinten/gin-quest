@@ -26,7 +26,7 @@ ngn.setup = function () {
   
   var center = {x: 0, y: 0};
   
-  this.currentState = new GridState();
+  this.currentState = new CameraState();
   this.currentState.init();
 
   window.addEventListener('resize', onR, false);
