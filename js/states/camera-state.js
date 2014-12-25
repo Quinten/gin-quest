@@ -39,8 +39,10 @@ var map = [
   this.offset = {x: -1024, y: -1024};
   this.finder = null;
   this.gin = null;
+  this.camera = null;
 
   this.init = function () {
+    this.camera = new Camera(16 * 64 + 32, 16 * 64 + 32);
     this.gin = new Gin(16,16);
     this.grid = new Grid();
     this.grid.init(32,32);
@@ -50,7 +52,6 @@ var map = [
     for(var y = 0; y < this.grid.numRows; y++){
       for(var x = 0; x < this.grid.numCols; x++){
         if (map[i] === 1) {
-          console.log("unw" + x + ":" + y);
           this.grid.setWalkable(x, y, false);
         }
         i++;
@@ -62,7 +63,8 @@ var map = [
   this.render = function (context) {
     //console.log('grid rendering');
     context.save();
-    context.translate(this.offset.x, this.offset.y);
+    this.camera.follow(this.gin);
+    context.translate(-this.camera.x, -this.camera.y);
     
     // draw a bg grid
     context.beginPath();
@@ -88,7 +90,7 @@ var map = [
       }
     }
     
-    // fill path
+    // fill finder path
     if (this.finder.path.length) {
       context.fillStyle = "#669900";
       for(var p = 0; p < this.finder.path.length; p++){
@@ -110,8 +112,8 @@ var map = [
   };
   
   this.processClick = function (x , y) {
-    var localX = x - this.offset.x;
-    var localY = y - this.offset.y;
+    var localX = x + this.camera.x;
+    var localY = y + this.camera.y;
     //console.log("localX:" + localX + " localY:" + localY);
     var gridX = Math.floor(localX / 64);
     var gridY = Math.floor(localY / 64);
@@ -119,9 +121,11 @@ var map = [
     //console.log(this.grid.getWalkable(gridX, gridY));
     //this.grid.setWalkable(gridX, gridY, !this.grid.getWalkable(gridX, gridY));
     if (this.grid.getWalkable(gridX, gridY)) {
-      this.grid.setStartNode(this.grid.endNode.x, this.grid.endNode.y);
+      this.grid.setStartNode(this.gin.x, this.gin.y);
       this.grid.setEndNode(gridX, gridY);
-      this.finder.findPath(this.grid);
+      if (this.finder.findPath(this.grid)){
+        this.gin.copyPath(this.finder.path);
+      }
     }
   }
   
