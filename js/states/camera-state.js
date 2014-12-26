@@ -64,6 +64,7 @@ var map = [
     //console.log('grid rendering');
     context.save();
     this.camera.follow(this.gin);
+    this.camera.frame((ngn.canvas.width/2), (ngn.canvas.height/2), (2048 - ngn.canvas.width/2), (2048 - ngn.canvas.height/2));
     context.translate(-this.camera.x, -this.camera.y);
     
     // draw a bg grid
