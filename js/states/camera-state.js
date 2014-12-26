@@ -115,6 +115,9 @@ var map = [
   this.processClick = function (x , y) {
     var localX = x + this.camera.x;
     var localY = y + this.camera.y;
+    if ((localX < 0) || (localX > 2048) || (localY < 0) || (localY > 2048)){
+      return;
+    }
     //console.log("localX:" + localX + " localY:" + localY);
     var gridX = Math.floor(localX / 64);
     var gridY = Math.floor(localY / 64);
