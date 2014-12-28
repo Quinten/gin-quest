@@ -64,6 +64,7 @@ var map = [
     //console.log('grid rendering');
     context.save();
     this.camera.follow(this.gin);
+    this.camera.frame((ngn.canvas.width/2), (ngn.canvas.height/2), (2048 - ngn.canvas.width/2), (2048 - ngn.canvas.height/2));
     context.translate(-this.camera.x, -this.camera.y);
     
     // draw a bg grid
@@ -114,6 +115,9 @@ var map = [
   this.processClick = function (x , y) {
     var localX = x + this.camera.x;
     var localY = y + this.camera.y;
+    if ((localX < 0) || (localX > 2048) || (localY < 0) || (localY > 2048)){
+      return;
+    }
     //console.log("localX:" + localX + " localY:" + localY);
     var gridX = Math.floor(localX / 64);
     var gridY = Math.floor(localY / 64);
