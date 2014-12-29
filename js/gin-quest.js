@@ -23,10 +23,12 @@ ngn.setup = function () {
   if(!context){
     return;
   }
+
+  ngn.spritelibrary = [{name: 'Gin', path: 'img/sprites/Pim.png', img: null},{name: 'Pim', path: 'img/sprites/Pim.png', img: null}];
   
   var center = {x: 0, y: 0};
   
-  this.currentState = new CameraState();
+  this.currentState = new LoadState();
   this.currentState.init();
 
   window.addEventListener('resize', onR, false);
