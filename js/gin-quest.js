@@ -25,7 +25,15 @@ ngn.setup = function () {
   }
 
   ngn.spritelibrary = [{name: 'Gin', path: 'img/sprites/Pim.png', img: null},{name: 'Pim', path: 'img/sprites/Pim.png', img: null}];
-  
+
+  ngn.getSpritesheetByName = function (targetName) {
+    for (var n = 0; n < ngn.spritelibrary.length; n++) {
+      if (ngn.spritelibrary[n].name === targetName) {
+        return ngn.spritelibrary[n];
+      }
+    }
+  };
+
   var center = {x: 0, y: 0};
   
   this.currentState = new LoadState();
@@ -59,13 +67,24 @@ ngn.setup = function () {
   };
   ngn.canvas.addEventListener('click', onC, false);
 
+  var start_time =  new Date().getTime(),
+                    time = getTimer();
+  ngn.elapsed = 17;
+
+  function getTimer() {
+    return (new Date().getTime() - start_time);
+  }
+
   (function onF (){
     window.requestAnimationFrame(onF, ngn.canvas);
     context.clearRect(-ngn.canvas.width/2, -ngn.canvas.height/2, ngn.canvas.width, ngn.canvas.height);
   
     context.fillStyle = "#99cc00";
     context.fillRect(-ngn.canvas.width/2, -ngn.canvas.height/2, ngn.canvas.width, ngn.canvas.height);
-    
+
+    ngn.elapsed = getTimer() - time;
+    time = getTimer();
+
     if (ngn.currentState !== null) {
       ngn.currentState.render(context);
     }

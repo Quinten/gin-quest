@@ -92,12 +92,12 @@ var map = [
     }
     
     // fill finder path
-    if (this.finder.path.length) {
-      context.fillStyle = "#669900";
-      for(var p = 0; p < this.finder.path.length; p++){
-          context.fillRect(this.finder.path[p].x * 64, this.finder.path[p].y * 64, 64, 64);
-      }      
-    }
+    //if (this.finder.path.length) {
+      //context.fillStyle = "#669900";
+      //for(var p = 0; p < this.finder.path.length; p++){
+          //context.fillRect(this.finder.path[p].x * 64, this.finder.path[p].y * 64, 64, 64);
+      //}
+    //}
     
     // fill startNode
     //context.fillStyle = "#ff3300";
@@ -128,13 +128,15 @@ var map = [
       this.grid.setStartNode(this.gin.x, this.gin.y);
       this.grid.setEndNode(gridX, gridY);
       if (this.finder.findPath(this.grid)){
+        this.gin.animationIndex = 0;
         this.gin.copyPath(this.finder.path);
       }
     }
   }
   
   this.destroy = function () {
-    console.log('camera destoyed');
+    this.gin.destroy();
+    console.log('Camera-state destoyed');
   };
 
 };

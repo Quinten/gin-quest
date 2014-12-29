@@ -9,6 +9,14 @@ var Gin = function (x, y) {
   this.stepFrames = 45; // how many frame it takes to walk one node
   this.stepFramesIndex = 0; // counter for where he is now
   this.path = []; // a path with nodes
+  // spritesheet stuff
+  this.spritesheet = ngn.getSpritesheetByName('Gin');
+  this.walking = [0,2,0,3];
+  this.resting = [0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,1];
+  this.animation = this.resting;
+  this.animationIndex = 0;
+  this.animationFPS = 8; // frames per second
+  this.animationTimer = 0;
 
   this.render = function (context) {
     this.stepFramesIndex++;
@@ -21,14 +29,28 @@ var Gin = function (x, y) {
         }
         this.x = nextNode.x;
         this.y = nextNode.y;
+        this.animation = this.walking;
+      } else {
+        this.animation = this.resting;
       }
     }
-    this.centerX += ((this.x * 64 + 32) - this.centerX) / 6;
-    this.centerY += ((this.y * 64 + 32) - this.centerY) / 6;
+    this.centerX += ((this.x * 64 + 32) - this.centerX) / 12;
+    this.centerY += ((this.y * 64 + 32) - this.centerY) / 12;
     // temp draw a red rect
-    context.fillStyle = "#ff3300";
-    context.fillRect(this.centerX - 32, this.centerY - 32, 64, 64);
-  }
+    //context.fillStyle = "#ff3300";
+    //context.fillRect(this.centerX - 32, this.centerY - 32, 64, 64);
+    // spritesheet animation
+    this.animationTimer += ngn.elapsed;
+    if (this.animationTimer > (1000 / this.animationFPS)){
+      this.animationTimer -= (1000 / this.animationFPS);
+      // we need to tick a frame here
+      this.animationIndex++;
+      if (this.animationIndex >= this.animation.length){
+        this.animationIndex = 0;
+      }
+    }
+    context.drawImage(this.spritesheet.img, this.animation[this.animationIndex] * 64, 0, 64, 64, this.centerX - 32, this.centerY - 32, 64, 64);
+  };
 
   this.copyPath = function (newPath) {
     this.path = [];
@@ -36,5 +58,9 @@ var Gin = function (x, y) {
       this.path[i] = newPath[i];
     }
     this.stepFramesIndex = 60;
-  }
+  };
+
+  this.destroy = function () {
+    this.spritesheet = null;
+  };
 };
