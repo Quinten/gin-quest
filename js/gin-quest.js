@@ -20,10 +20,12 @@ ngn.setup = function () {
   ngn.canvas = document.getElementById('canvas'); 
   var context = ngn.canvas.getContext('2d');
 
+  // if context is not supported exit
   if(!context){
     return;
   }
 
+  // library with images
   ngn.spritelibrary = [{name: 'Gin', path: 'img/sprites/Pim.png', img: null},{name: 'Pim', path: 'img/sprites/Pim.png', img: null}];
 
   ngn.getSpritesheetByName = function (targetName) {
@@ -33,13 +35,13 @@ ngn.setup = function () {
       }
     }
   };
-
-  var center = {x: 0, y: 0};
   
+  // load the first state wich is a loads the images
   this.currentState = new LoadState();
   this.currentState.init();
 
-  window.addEventListener('resize', onR, false);
+  // center the canvas and resize it
+  var center = {x: 0, y: 0};
   function onR () {
     ngn.canvas.width = (window.innerWidth < 1024) ? window.innerWidth : 1024;
     ngn.canvas.height = (window.innerHeight < 1024) ? window.innerHeight : 1024;
@@ -47,6 +49,7 @@ ngn.setup = function () {
     center.y = ngn.canvas.height / 2;
     context.translate(center.x, center.y);
   }
+  window.addEventListener('resize', onR, false);
   onR();
   
   function onC (e) {
