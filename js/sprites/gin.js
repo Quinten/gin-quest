@@ -42,7 +42,7 @@ var Gin = function (x, y) {
     // spritesheet animation
     this.animationTimer += ngn.elapsed;
     if (this.animationTimer > (1000 / this.animationFPS)){
-      this.animationTimer -= (1000 / this.animationFPS);
+      this.animationTimer = this.animationTimer % (1000 / this.animationFPS);
       // we need to tick a frame here
       this.animationIndex++;
       if (this.animationIndex >= this.animation.length){
