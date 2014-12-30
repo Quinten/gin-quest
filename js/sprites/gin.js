@@ -49,7 +49,7 @@ var Gin = function (x, y) {
         this.animationIndex = 0;
       }
     }
-    context.drawImage(this.spritesheet.img, this.animation[this.animationIndex] * 64, 0, 64, 64, this.centerX - 32, this.centerY - 32, 64, 64);
+    context.drawImage(this.spritesheet.img, this.animation[this.animationIndex] * 64, 0, 64, 64, Math.floor(this.centerX - 32), Math.floor(this.centerY - 32), 64, 64);
   };
 
   this.copyPath = function (newPath) {
