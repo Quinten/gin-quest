@@ -20,6 +20,12 @@ ngn.setup = function () {
   ngn.canvas = document.getElementById('canvas'); 
   var context = ngn.canvas.getContext('2d');
 
+  // experimental pixel art settings
+  context.mozImageSmoothingEnabled = false;
+  context.webkitImageSmoothingEnabled = false;
+  context.msImageSmoothingEnabled = false;
+  context.imageSmoothingEnabled = false;
+
   // if context is not supported exit
   if(!context){
     return;
