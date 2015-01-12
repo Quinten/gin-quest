@@ -42,7 +42,7 @@ var map = [
 
   this.init = function () {
     this.camera = new Camera(24 * 64 + 32, 31 * 64 + 32);
-    this.gin = new Gin(24,31);
+    this.gin = new Jim(24,31);
     this.grid = new Grid();
     this.grid.init(32,32);
     this.grid.setStartNode(16,16);
@@ -64,7 +64,7 @@ var map = [
     context.save();
     this.camera.follow(this.gin);
     this.camera.frame((ngn.canvas.width/2), (ngn.canvas.height/2), (2048 - ngn.canvas.width/2), (2048 - ngn.canvas.height/2));
-    context.translate(-this.camera.x, -this.camera.y);
+    context.translate( - Math.floor(this.camera.x), - Math.floor(this.camera.y));
     
     // draw a bg grid
     context.beginPath();
@@ -118,6 +118,10 @@ var map = [
   this.destroy = function () {
     this.gin.destroy();
     console.log('ParcState destoyed');
+  };
+
+  this.mapToImg = function () {
+  	//canvas.toDataURL(type, encoderOptions);
   };
 
 };

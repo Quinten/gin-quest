@@ -6,8 +6,11 @@ var LoadState = function () {
     //console.log(ngn.spritelibrary.length);
     for (var i = 0; i < ngn.spritelibrary.length; i++){
       ngn.spritelibrary[i].img = new Image();
+      (function(){
+      var libIndex = i;
       ngn.spritelibrary[i].img.onload = function (e) {
         //console.log(this.src + ' loaded!');
+        ngn.spritelibrary[libIndex].img = resizeImg(ngn.spritelibrary[libIndex].img, 2);
         nLoaded++;
         if (nLoaded === ngn.spritelibrary.length) {
           // all images  have loaded
@@ -16,7 +19,7 @@ var LoadState = function () {
           ngn.currentState.init();
           oldState.destroy();
         }
-      };
+      };})();
       ngn.spritelibrary[i].img.src = ngn.spritelibrary[i].path;
     }
   };

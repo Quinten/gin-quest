@@ -9,6 +9,13 @@ canvas {
   display: block;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+  /* http://stackoverflow.com/questions/7615009/disable-interpolation-when-scaling-a-canvas */
+  image-rendering: optimizeSpeed;             /* Older versions of FF */
+  image-rendering: -moz-crisp-edges;          /* FF 6.0+ */
+  image-rendering: -webkit-optimize-contrast; /* Safari */
+  image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+  image-rendering: pixelated;                 /* Awesome future-browsers */
+  -ms-interpolation-mode: nearest-neighbor;   /* IE */
 }
 
 #wrapper {

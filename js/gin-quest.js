@@ -32,7 +32,7 @@ ngn.setup = function () {
   }
 
   // library with images
-  ngn.spritelibrary = [{name: 'Gin', path: 'img/sprites/Pim.png', img: null},{name: 'Pim', path: 'img/sprites/Pim.png', img: null}];
+  ngn.spritelibrary = [{name: 'Gin', path: 'img/sprites/Jim.png', img: null},{name: 'Pim', path: 'img/sprites/Pim.png', img: null},{name: 'Jim', path: 'img/sprites/Jim.png', img: null}];
 
   ngn.getSpritesheetByName = function (targetName) {
     for (var n = 0; n < ngn.spritelibrary.length; n++) {
