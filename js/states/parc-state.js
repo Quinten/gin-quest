@@ -126,10 +126,10 @@ var map = [
     imgCanvas.width = 32 * tileSize;
     imgCanvas.height = 32 * tileSize;
     var imgContext = imgCanvas.getContext("2d");
-    imgContext.fillStyle = "#ffffff";
+    imgContext.fillStyle = "#99cc00";
     imgContext.fillRect(0, 0, 32 * tileSize, 32 * tileSize);
     // fill unwalkable nodes
-    imgContext.fillStyle = "#999999";
+    imgContext.fillStyle = "#669900";
     for(var i = 0; i < this.grid.numCols; i++){
       for(var j = 0; j < this.grid.numRows; j++){
         if (!this.grid.getWalkable(i, j)) {
