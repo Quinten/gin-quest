@@ -57,6 +57,7 @@ var map = [
       }
     }
     this.finder = new AStar();
+    this.mapToImg(16);
   };
   
   this.render = function (context) {
@@ -120,8 +121,23 @@ var map = [
     console.log('ParcState destoyed');
   };
 
-  this.mapToImg = function () {
-  	//canvas.toDataURL(type, encoderOptions);
+  this.mapToImg = function (tileSize) {
+    var imgCanvas = document.createElement("canvas");
+    imgCanvas.width = 32 * tileSize;
+    imgCanvas.height = 32 * tileSize;
+    var imgContext = imgCanvas.getContext("2d");
+    imgContext.fillStyle = "#ffffff";
+    imgContext.fillRect(0, 0, 32 * tileSize, 32 * tileSize);
+    // fill unwalkable nodes
+    imgContext.fillStyle = "#999999";
+    for(var i = 0; i < this.grid.numCols; i++){
+      for(var j = 0; j < this.grid.numRows; j++){
+        if (!this.grid.getWalkable(i, j)) {
+          imgContext.fillRect(i * tileSize, j * tileSize, tileSize, TileSize);
+        }
+      }
+    }
+    window.location.href = imgCanvas.toDataURL();
   };
 
 };
