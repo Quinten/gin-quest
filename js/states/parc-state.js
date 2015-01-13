@@ -1,4 +1,4 @@
-var ParcState = function () {
+lvar ParcState = function () {
 
 var map = [
 1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,
@@ -137,7 +137,7 @@ var map = [
         }
       }
     }
-    window.location.href = imgCanvas.toDataURL();
+    window.location = imgCanvas.toDataURL();
   };
 
 };
