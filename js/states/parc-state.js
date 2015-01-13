@@ -133,11 +133,11 @@ var map = [
     for(var i = 0; i < this.grid.numCols; i++){
       for(var j = 0; j < this.grid.numRows; j++){
         if (!this.grid.getWalkable(i, j)) {
-          imgContext.fillRect(i * tileSize, j * tileSize, tileSize, TileSize);
+          imgContext.fillRect(i * tileSize, j * tileSize, tileSize, tileSize);
         }
       }
     }
-    window.location = imgCanvas.toDataURL();
+    window.location.href = imgCanvas.toDataURL();
   };
 
 };
