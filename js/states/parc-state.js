@@ -137,7 +137,7 @@ var map = [
         }
       }
     }
-    window.location.href = imgCanvas.toDataURL();
+    window.location = imgCanvas.toDataURL();
   };
 
 };
