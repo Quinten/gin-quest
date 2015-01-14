@@ -57,7 +57,7 @@ var map = [
       }
     }
     this.finder = new AStar();
-    this.mapToImg(16);
+    //this.mapToImg(16);
   };
   
   this.render = function (context) {
