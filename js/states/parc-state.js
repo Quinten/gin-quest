@@ -42,7 +42,7 @@ var map = [
 
   this.init = function () {
     this.camera = new Camera(24 * 64 + 32, 31 * 64 + 32);
-    this.gin = new Jim(24,31);
+    this.gin = new Pim(24,31);
     this.grid = new Grid();
     this.grid.init(32,32);
     this.grid.setStartNode(16,16);
