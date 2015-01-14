@@ -10,7 +10,7 @@ var LoadState = function () {
       var libIndex = i;
       ngn.spritelibrary[i].img.onload = function (e) {
         //console.log(this.src + ' loaded!');
-        ngn.spritelibrary[libIndex].img = resizeImg(ngn.spritelibrary[libIndex].img, 2);
+        ngn.spritelibrary[libIndex].img = resizeImg(ngn.spritelibrary[libIndex].img, 4);
         nLoaded++;
         if (nLoaded === ngn.spritelibrary.length) {
           // all images  have loaded
