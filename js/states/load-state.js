@@ -15,7 +15,7 @@ var LoadState = function () {
         if (nLoaded === ngn.spritelibrary.length) {
           // all images  have loaded
           var oldState = ngn.currentState;
-          ngn.currentState = new ParcState();
+          ngn.currentState = new CaveState();
           ngn.currentState.init();
           oldState.destroy();
         }
