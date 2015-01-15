@@ -61,6 +61,6 @@ var Pim = function (x, y) {
   };
 
   this.destroy = function () {
-    this.spritesheet = null;
+    //this.spritesheet = null;
   };
 };
