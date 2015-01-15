@@ -9,6 +9,7 @@ var Gin = function (x, y) {
   this.stepFrames = 45; // how many frame it takes to walk one node
   this.stepFramesIndex = 0; // counter for where he is now
   this.path = []; // a path with nodes
+  this.lastWalkedNode = null;
   // spritesheet stuff
   this.spritesheet = ngn.getSpritesheetByName('Gin');
   this.walking = [0,2,0,3];
@@ -22,11 +23,18 @@ var Gin = function (x, y) {
     this.stepFramesIndex++;
     if (this.stepFramesIndex > this.stepFrames) {
       this.stepFramesIndex = 0;
+      if (this.lastWalkedNode != null){
+      	if (this.lastWalkedNode.walked != null) {
+      		this.lastWalkedNode.walked();
+      	}
+      	this.lastWalkedNode = null;
+      }
       if (this.path.length) {
         var nextNode = this.path.shift();
         if ((nextNode.x == this.x) && (nextNode.y == this.y) && (this.path.length)) {
           nextNode = this.path.shift();
         }
+        this.lastWalkedNode = nextNode;
         this.x = nextNode.x;
         this.y = nextNode.y;
         this.animation = this.walking;

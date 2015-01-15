@@ -7,4 +7,5 @@ var Node = function (x, y) {
   this.walkable = true;
   parent = null;
   this.costMultiplier = 1;
+  this.walked = null; // callback when node is walked
 }

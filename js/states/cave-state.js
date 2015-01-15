@@ -42,7 +42,7 @@ var map = [
 
   this.init = function () {
     this.camera = new Camera(31 * 64 + 32, 2 * 64 + 32);
-    this.gin = new Pim(31,2);
+    this.gin = new Gin(31,2);
     this.grid = new Grid();
     this.grid.init(32,32);
     this.grid.setStartNode(16,16);
@@ -57,6 +57,19 @@ var map = [
       }
     }
     this.finder = new AStar();
+    
+    var caveExitWest = function () {
+    	  var oldState = ngn.currentState;
+          ngn.currentState = new ParcState();
+          ngn.currentState.init();
+          oldState.destroy();
+    };
+    
+    var exitNodeWestOne = this.grid.getNode(0,1);
+    exitNodeWestOne.walked = caveExitWest;
+    var exitNodeWestTwo = this.grid.getNode(0,2);
+    exitNodeWestTwo.walked = caveExitWest;
+    
     //this.mapToImg(16);
   };
   
