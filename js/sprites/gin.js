@@ -11,7 +11,7 @@ var Gin = function (x, y) {
   this.path = []; // a path with nodes
   this.lastWalkedNode = null;
   // spritesheet stuff
-  this.spritesheet = ngn.getSpritesheetByName('Gin');
+  //this.spritesheet = ngn.getSpritesheetByName('Gin');
   this.walking = [0,2,0,3];
   this.resting = [0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,1];
   this.animation = this.resting;
@@ -57,7 +57,7 @@ var Gin = function (x, y) {
         this.animationIndex = 0;
       }
     }
-    context.drawImage(this.spritesheet.img, this.animation[this.animationIndex] * 128, 0, 128, 128, Math.floor(this.centerX - 64), Math.floor(this.centerY - 96), 128, 128);
+    context.drawImage(ngn.getSpritesheetByName('Gin').img, this.animation[this.animationIndex] * 128, 0, 128, 128, Math.floor(this.centerX - 64), Math.floor(this.centerY - 96), 128, 128);
   };
 
   this.copyPath = function (newPath) {
@@ -69,6 +69,6 @@ var Gin = function (x, y) {
   };
 
   this.destroy = function () {
-    this.spritesheet = null;
+    //this.spritesheet = null;
   };
 };
