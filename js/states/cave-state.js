@@ -74,7 +74,7 @@ var map = [
   };
   
   this.render = function (context) {
-    //console.log('grid rendering');
+    console.log('grid rendering');
     context.save();
     this.camera.follow(this.gin);
     this.camera.frame((ngn.canvas.width/2), (ngn.canvas.height/2), (2048 - ngn.canvas.width/2), (2048 - ngn.canvas.height/2));
@@ -107,6 +107,7 @@ var map = [
     // render gin sprite
     this.gin.render(context);
     context.restore();
+    console.log("Stop rendering grid");
   };
   
   this.processClick = function (x , y) {
