@@ -6,16 +6,6 @@ var resizeImg = function( img, scale ) {
     // and copied, pixel by pixel into another offscreen canvas with the 
     // new size.
 
-    //var ratio = ctx.webkitBackingStorePixelRatio || 1;
-//ctx.drawImage( img, 0, 0, img.width/ratio, img.height/ratio );
-
-//var pixels = null;
-//if( ratio != 1 ) {
-//    pixels = ctx.webkitGetImageDataHD( 0, 0, img.width, img.height );
-//}
-//else {
-//    pixels = ctx.getImageData( 0, 0, img.width, img.height );
-//}   
     var widthScaled = img.width * scale;
     var heightScaled = img.height * scale;
     
@@ -24,28 +14,14 @@ var resizeImg = function( img, scale ) {
     orig.height = img.height;
     var origCtx = orig.getContext('2d');
     origCtx.drawImage(img, 0, 0, img.width, img.height);
-    //origCtx.drawImage(img, 0, 0, img.width/ratio, img.height/ratio); 
     var origPixels = origCtx.getImageData(0, 0, img.width, img.height);
-
-/* 	var origPixels = null;
-	if( ratio != 1 ) {
-    	origPixels = origCtx.webkitGetImageDataHD( 0, 0, img.width, img.height );
-    } else {
-        origPixels = origCtx.getImageData( 0, 0, img.width, img.height );
-    } */
     
     var scaled = document.createElement('canvas');
     scaled.width = widthScaled;
     scaled.height = heightScaled;
     var scaledCtx = scaled.getContext('2d');
     var scaledPixels = scaledCtx.getImageData( 0, 0, widthScaled, heightScaled );
-// 	var scaledPixels = null;
-/* 	if( ratio != 1 ) {
-    	scaledPixels = scaledCtx.webkitGetImageDataHD( 0, 0, widthScaled, heightScaled );
-    } else {
-        scaledPixels = scaledCtx.getImageData( 0, 0, widthScaled, heightScaled );
-    } */
-    
+
     for( var y = 0; y < heightScaled; y++ ) {
         for( var x = 0; x < widthScaled; x++ ) {
             var index = (Math.floor(y / scale) * img.width + Math.floor(x / scale)) * 4;
